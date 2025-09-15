@@ -4,12 +4,13 @@ config:
     - ec_user
     - ec_ssh
 
-  inventory:                         # inventory config (builds inventory file dynamically)
-    source_system:
-      hosts:
-        zos_host:
-          ansible_host: "{{ lookup('env', 'ec_host') }}"
-          ansible_user: "{{ lookup('env', 'ec_user') }}"
+  inventory:
+    path: ../zos_concepts/zos_ping/inventories/inventory.yml                         # inventory config (builds inventory file dynamically)
+    # source_system:
+    #   hosts:
+    #     zos_host:
+    #       ansible_host: "{{ lookup('env', 'ec_host') }}"
+    #       ansible_user: "{{ lookup('env', 'ec_user') }}"
     # groups:
     #   webservers:
     #     - web
