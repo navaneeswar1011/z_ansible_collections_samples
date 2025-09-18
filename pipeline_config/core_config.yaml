@@ -1,11 +1,14 @@
 config:
   credentials:                       #section for secrets
-    - ec_host
-    - ec_user
-    - ec_ssh
+    - name: ec_host
+      type: host
+    - name: ec_user
+      type: user
+    - name: ec_ssh
+      type: ssh
 
   inventory:
-    path: ../zos_concepts/zos_ping/inventories/inventory.yml                         # inventory config (builds inventory file dynamically)
+    path: zos_concepts/zos_ping/inventories/inventory.yml                         # inventory config (builds inventory file dynamically)
     # source_system:
     #   hosts:
     #     zos_host:
@@ -21,6 +24,6 @@ config:
     - name: Ping the EC
       description: "Test the ssh connection to EC using ping"
       playbooks:
-        - ../zos_concepts/zos_ping/zos_ping.yaml
+        - zos_concepts/zos_ping/zos_ping.yaml
       # cleanup:
       #   - playbooks/cleanup.yml
