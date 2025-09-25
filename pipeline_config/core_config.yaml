@@ -25,5 +25,14 @@ config:
       description: "Test the ssh connection to EC using ping"
       playbooks:
         - zos_concepts/zos_ping/zos_ping.yaml
+        - zos_concepts/zos_ping/zos_ping.yaml
+        - zos_concepts/zos_ping/zos_ping.yaml
+
       # cleanup:
       #   - playbooks/cleanup.yml
+
+    - name: Ping the EC failure
+      description: "Test the fault ssh connection to EC using ping"
+      playbooks:
+        - zos_concepts/zos_ping/zos_ping.yaml
+        - zos_concepts/zos_ping/zos_ping2.yaml
