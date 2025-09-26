@@ -52,10 +52,10 @@ ZOAU: "/zoau/v1.3.5"
 # ZOAU_PYTHON_LIBRARY_PATH: ""
 
 # If using pre-compiled binaries for ZOAU v1.3.x, uncomment the following line:
-ZOAU_PYTHON_LIBRARY_PATH: "{{ ZOAU }}/lib/{{ PYZ_VERSION }}"
+# ZOAU_PYTHON_LIBRARY_PATH: "{{ ZOAU }}/lib/{{ PYZ_VERSION }}"
 
 # If using pre-compiled binaries for ZOAU v1.2.x, uncomment the following line:
-# ZOAU_PYTHON_LIBRARY_PATH: "{{ ZOAU }}/lib"
+ZOAU_PYTHON_LIBRARY_PATH: "{{ ZOAU }}/lib"
 
 ################################################################################
 # Do not configure, variable substitution will correctly set the
