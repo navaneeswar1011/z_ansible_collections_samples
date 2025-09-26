@@ -49,13 +49,13 @@ ZOAU: "/zoau/v1.3.5"
 # If the ZOAU python zoautil_py package has been installed in the default location
 # that is part of Python's search path, the `ZOAU_PYTHON_LIBRARY_PATH` environment
 # variable must be set as an empty string. Uncomment the following line:
-# ZOAU_PYTHON_LIBRARY_PATH: ""
+ZOAU_PYTHON_LIBRARY_PATH: ""
 
 # If using pre-compiled binaries for ZOAU v1.3.x, uncomment the following line:
 # ZOAU_PYTHON_LIBRARY_PATH: "{{ ZOAU }}/lib/{{ PYZ_VERSION }}"
 
 # If using pre-compiled binaries for ZOAU v1.2.x, uncomment the following line:
-ZOAU_PYTHON_LIBRARY_PATH: "{{ ZOAU }}/lib"
+# ZOAU_PYTHON_LIBRARY_PATH: "{{ ZOAU }}/lib"
 
 ################################################################################
 # Do not configure, variable substitution will correctly set the
