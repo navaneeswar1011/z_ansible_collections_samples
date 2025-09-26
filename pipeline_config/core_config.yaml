@@ -33,8 +33,7 @@ config:
       cleanup:
         - zos_concepts/zos_ping/zos_ping.yaml
 
-    - name: Ping the EC failure
-      description: "Test the fault ssh connection to EC using ping"
+    - name: Test datasets
+      description: "Test the datasets playbook"
       playbooks:
-        - zos_concepts/zos_ping/zos_ping.yaml
-        - zos_concepts/zos_ping/zos_ping2.yaml
+        - zos_concepts/data_sets/data_set_basics/data_set_basics.yml
