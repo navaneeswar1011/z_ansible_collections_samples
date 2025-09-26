@@ -19,6 +19,9 @@ config:
     #     - web
     #   dbservers:
     #     - db
+  
+  ansible_config:
+    path: zos_concepts/zos_ping/ansible.cfg
 
   stages:
     - name: Ping the EC
