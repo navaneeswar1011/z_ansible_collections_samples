@@ -19,6 +19,10 @@ config:
     #     - web
     #   dbservers:
     #     - db
+
+  collections:
+  # list of collections need to install
+    - ibm.ibm_zos_core
   
   ansible_config:
     path: zos_concepts/zos_ping/ansible.cfg

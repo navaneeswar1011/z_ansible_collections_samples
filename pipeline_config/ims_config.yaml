@@ -20,20 +20,18 @@ config:
     #   dbservers:
     #     - db
   
+  collections:
+  # list of collections need to install
+    - ibm.ibm_zos_core
+  
   ansible_config:
     path: zos_concepts/zos_ping/ansible.cfg
 
   stages:
-    - name: Ping the EC
-      description: "Test the ssh connection to EC using ping"
+    - name: Ping the IMS EC
+      description: "Test the ssh connection to IMS EC using ping"
       playbooks:
-        - zos_concepts/zos_ping/zos_ping.yaml
         - zos_concepts/zos_ping/zos_ping.yaml
 
       cleanup:
         - zos_concepts/zos_ping/zos_ping.yaml
-
-    - name: Test datasets
-      description: "Test the datasets playbook"
-      playbooks:
-        - zos_concepts/data_sets/data_set_basics/data_set_basics.yml
