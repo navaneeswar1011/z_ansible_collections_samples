@@ -1,43 +1,50 @@
-config:
-  credentials:                       #section for secrets
-    - name: ec_host
-      type: host
-    - name: ec_user
-      type: user
-    - name: ec_ssh
-      type: ssh
+vault_keys:                       #section for secrets
+  - name: ec_host
+    type: host
+  - name: ec_user
+    type: user
+  - name: ec_ssh
+    type: ssh
 
-  inventory:
-    path: zos_concepts/zos_ping/inventories/inventory.yml                         # inventory config (builds inventory file dynamically)
-    # source_system:
-    #   hosts:
-    #     zos_host:
-    #       ansible_host: "{{ lookup('env', 'ec_host') }}"
-    #       ansible_user: "{{ lookup('env', 'ec_user') }}"
-    # groups:
-    #   webservers:
-    #     - web
-    #   dbservers:
-    #     - db
+# inventory:
+#   path: zos_concepts/zos_ping/inventories/inventory123.yml                         # inventory config (builds inventory file dynamically)
+#   # source_system:
+#   #   hosts:
+#   #     zos_host:
+#   #       ansible_host: "{{ lookup('env', 'ec_host') }}"
+#   #       ansible_user: "{{ lookup('env', 'ec_user') }}"
+#   # groups:
+#   #   webservers:
+#   #     - web
+#   #   dbservers:
+#   #     - db
 
+# collections:
+# # list of collections need to install
+#   - ibm.ibm_zos_core
+
+# ansible_config:
+#   path: zos_concepts/zos_ping/ansible123.cfg
+
+ansible_environment:
+  inventory: zos_concepts/zos_ping/inventories/inventory.yml
+  ansible_cfg: zos_concepts/zos_ping/ansible.cfg
+  host_vars: host_vars/
+  group_vars: group_vars/
   collections:
-  # list of collections need to install
     - ibm.ibm_zos_core
-  
-  ansible_config:
-    path: zos_concepts/zos_ping/ansible.cfg
 
-  stages:
-    - name: Ping the EC
-      description: "Test the ssh connection to EC using ping"
-      playbooks:
-        - zos_concepts/zos_ping/zos_ping.yaml
-        - zos_concepts/zos_ping/zos_ping.yaml
+stages:
+  - name: Ping the EC
+    description: "Test the ssh connection to EC using ping"
+    playbooks:
+      - zos_concepts/zos_ping/zos_ping.yaml
+      - zos_concepts/zos_ping/zos_ping.yaml
 
-      cleanup:
-        - zos_concepts/zos_ping/zos_ping.yaml
+    cleanup:
+      - zos_concepts/zos_ping/zos_ping.yaml
 
-    - name: Test datasets
-      description: "Test the datasets playbook"
-      playbooks:
-        - zos_concepts/data_sets/data_set_basics/data_set_basics.yml
+  - name: Test datasets
+    description: "Test the datasets playbook"
+    playbooks:
+      - zos_concepts/data_sets/data_set_basics/data_set_basics.yml
