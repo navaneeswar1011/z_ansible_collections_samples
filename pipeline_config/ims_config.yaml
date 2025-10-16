@@ -29,8 +29,8 @@ vault_keys:                       #section for secrets
 ansible_environment:
   inventory: zos_concepts/zos_ping/inventories/inventory.yml
   ansible_cfg: zos_concepts/zos_ping/ansible.cfg
-  host_vars: host_vars/
-  group_vars: group_vars/
+  # host_vars: host_vars/
+  # group_vars: group_vars/
   collections:
     - ibm.ibm_zos_core
 
