@@ -20,8 +20,9 @@ stages:
     playbooks:
       - zos_concepts/zos_ping/zos_ping.yaml
       - zos_concepts/zos_ping/zos_ping.yaml
-
     cleanup:
+      - zos_concepts/zos_ping/zos_ping.yaml
+    validation:
       - zos_concepts/zos_ping/zos_ping.yaml
 
   - name: Test datasets
