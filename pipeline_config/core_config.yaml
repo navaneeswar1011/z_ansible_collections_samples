@@ -1,3 +1,4 @@
+vault_secret_path: secret/data/test/path
 vault_keys:                       #section for secrets
   - name: ec_host
     type: host
