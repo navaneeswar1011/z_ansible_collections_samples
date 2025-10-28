@@ -16,3 +16,14 @@ source_system:
       ansible_host: "{{ lookup('env', 'ec_host') }}"
       ansible_user: "{{ lookup('env', 'ec_user') }}"
       ansible_ssh_private_key_file: "{{ lookup('env', 'ec_ssh') }}"
+
+# +-----------------------------------------------------------------------------
+# | The system which should receive a copy of the data sets on source_system
+# | Do not change group name from "destination_system"
+# +-----------------------------------------------------------------------------
+destination_system:
+  hosts:
+    destination: # do not change host name from "destination"
+      ansible_host: "{{ lookup('env', 'dest_ec_host') }}"
+      ansible_user: "{{ lookup('env', 'ec_user') }}"
+      ansible_ssh_private_key_file: "{{ lookup('env', 'ec_ssh') }}"
