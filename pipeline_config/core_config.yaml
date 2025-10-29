@@ -20,6 +20,13 @@ ansible_environment:
 stages:
   - name: Ping the EC
     description: "Test the ssh connection to EC using ping"
+    ansible_environment:
+      inventory: zos_concepts/zos_ping/inventories/inventory.yml
+      ansible_cfg: zos_concepts/zos_ping/ansible.cfg
+      # host_vars: pipeline_config/inventories/host_vars
+      # group_vars: pipeline_config/inventories/group_vars
+      collections:
+        - ibm.ibm_zos_core
     playbooks:
       - zos_concepts/zos_ping/zos_ping.yaml
     cleanup:
@@ -32,110 +39,110 @@ stages:
     
     playbooks:
       - zos_concepts/data_sets/data_set_basics/data_set_basics.yml
-      - zos_concepts/data_sets/copy_edit_submit/copy_edit_submit.yml
+  #     - zos_concepts/data_sets/copy_edit_submit/copy_edit_submit.yml
   
-  - name: Data transfer
-    description: "This playbook demonstrates how to copy data to and from a z/OS system using modules included in the Red Hat Ansible Certified Content for IBM Z core collection."
-    playbooks:
-      - zos_concepts/data_transfer/copy_fetch_data_set/copy_fetch_data_set.yml
-      - zos_concepts/data_transfer/copy_sort_fetch/copy-sort-fetch.yml
-      - zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/dump-pack-ftp.yml
-      - zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/transfer-data-sets.yml
-      - zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/unpack-restore.yml
-      - zos_concepts/data_transfer/terse_fetch_data_set/terse_fetch_data_set.yml
+  # - name: Data transfer
+  #   description: "This playbook demonstrates how to copy data to and from a z/OS system using modules included in the Red Hat Ansible Certified Content for IBM Z core collection."
+  #   playbooks:
+  #     - zos_concepts/data_transfer/copy_fetch_data_set/copy_fetch_data_set.yml
+  #     - zos_concepts/data_transfer/copy_sort_fetch/copy-sort-fetch.yml
+  #     - zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/dump-pack-ftp.yml
+  #     - zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/transfer-data-sets.yml
+  #     - zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/unpack-restore.yml
+  #     - zos_concepts/data_transfer/terse_fetch_data_set/terse_fetch_data_set.yml
   
-  - name: Encoding
-    description: "This playbook demonstrates how to perform encoding conversions"
-    playbooks:
-      - zos_concepts/encoding/convert_encoding/convert_encoding.yml
+  # - name: Encoding
+  #   description: "This playbook demonstrates how to perform encoding conversions"
+  #   playbooks:
+  #     - zos_concepts/encoding/convert_encoding/convert_encoding.yml
   
-  - name: GDG data sets
-    description: "This playbook demonstrates how to create, edit, copy and fetch Generation Data Groups (GDG) and Generation Datasets (GDS)."
-    playbooks:
-      - zos_concepts/gdg_datasets/copy_edit_fetch/copy_edit_fetch.yml
-      - zos_concepts/gdg_datasets/create_copy_submit/create_copy_submit.yml
+  # - name: GDG data sets
+  #   description: "This playbook demonstrates how to create, edit, copy and fetch Generation Data Groups (GDG) and Generation Datasets (GDS)."
+  #   playbooks:
+  #     - zos_concepts/gdg_datasets/copy_edit_fetch/copy_edit_fetch.yml
+  #     - zos_concepts/gdg_datasets/create_copy_submit/create_copy_submit.yml
   
-  - name: Batch jobs
-    description: "This playbook demonstrates how to submit batch jobs, query and retrieve job output"
-    playbooks:
-      - zos_concepts/jobs/submit_multiple_jobs_async/submit_async_query_retrieve.yml
-      - zos_concepts/jobs/submit_query_retrieve/submit_query_retrieve.yml
+  # - name: Batch jobs
+  #   description: "This playbook demonstrates how to submit batch jobs, query and retrieve job output"
+  #   playbooks:
+  #     - zos_concepts/jobs/submit_multiple_jobs_async/submit_async_query_retrieve.yml
+  #     - zos_concepts/jobs/submit_query_retrieve/submit_query_retrieve.yml
   
-  - name: Git APF
-    description: "Synchronize APF authorized libraries on z/OS from a configuration file cloned from GitHub"
-    playbooks:
-      - zos_concepts/program_authorization/git_apf/prog_auth.yml
+  # - name: Git APF
+  #   description: "Synchronize APF authorized libraries on z/OS from a configuration file cloned from GitHub"
+  #   playbooks:
+  #     - zos_concepts/program_authorization/git_apf/prog_auth.yml
 
-  - name: REST APIs
-    description: "This sample playbook demonstrates basic use cases for invoking a REST API service, particularly the z/OSMF REST API services."
-    playbooks:
-      - zos_concepts/rest_apis/uri-sample.yml
+  # - name: REST APIs
+  #   description: "This sample playbook demonstrates basic use cases for invoking a REST API service, particularly the z/OSMF REST API services."
+  #   playbooks:
+  #     - zos_concepts/rest_apis/uri-sample.yml
 
-  - name: Software Management
-    description: "This stage provides sample playbooks and roles which can be used to perform SMPE operations."
-    playbooks:
-      - zos_concepts/software_management/accept.yml
-      - zos_concepts/software_management/install.yml
-      - zos_concepts/software_management/order.yml
-      - zos_concepts/software_management/query_csi.yml
-      - zos_concepts/software_management/reject.yml
-      - zos_concepts/software_management/setup_internet_retrieval.yml
-      - zos_concepts/software_management/uninstall.yml
+  # - name: Software Management
+  #   description: "This stage provides sample playbooks and roles which can be used to perform SMPE operations."
+  #   playbooks:
+  #     - zos_concepts/software_management/accept.yml
+  #     - zos_concepts/software_management/install.yml
+  #     - zos_concepts/software_management/order.yml
+  #     - zos_concepts/software_management/query_csi.yml
+  #     - zos_concepts/software_management/reject.yml
+  #     - zos_concepts/software_management/setup_internet_retrieval.yml
+  #     - zos_concepts/software_management/uninstall.yml
 
-  - name: Templates
-    description: "Use Jinja templates with zos_copy, to compile and link a library with ibm_zos_core, to submit jobs with zos_job_submit"
-    playbooks:
-      - zos_concepts/templates/copy_template/zos_copy_template.yml
-      - zos_concepts/templates/loadlib/compile_link_loadlib.yml
-      - zos_concepts/templates/submit_job_template/submit_templates.yml
+  # - name: Templates
+  #   description: "Use Jinja templates with zos_copy, to compile and link a library with ibm_zos_core, to submit jobs with zos_job_submit"
+  #   playbooks:
+  #     - zos_concepts/templates/copy_template/zos_copy_template.yml
+  #     - zos_concepts/templates/loadlib/compile_link_loadlib.yml
+  #     - zos_concepts/templates/submit_job_template/submit_templates.yml
 
-  - name: TSO commands
-    description: "Run REXX scripts and CLISTs inside TSO in a z/OS system"
-    playbooks:
-      - zos_concepts/tso_commands/scripts/run_rexx_and_clist.yml
+  # - name: TSO commands
+  #   description: "Run REXX scripts and CLISTs inside TSO in a z/OS system"
+  #   playbooks:
+  #     - zos_concepts/tso_commands/scripts/run_rexx_and_clist.yml
   
-  - name: User Management
-    description: "Manage z/OS Users Using Ansible"
-    playbooks:
-      - zos_concepts/user_management/add_remove_user/add-user.yml
-      - zos_concepts/user_management/add_remove_user/remove-user.yml
-      - zos_concepts/user_management/add_remove_user/send-rejection-email.yml
+  # - name: User Management
+  #   description: "Manage z/OS Users Using Ansible"
+  #   playbooks:
+  #     - zos_concepts/user_management/add_remove_user/add-user.yml
+  #     - zos_concepts/user_management/add_remove_user/remove-user.yml
+  #     - zos_concepts/user_management/add_remove_user/send-rejection-email.yml
   
-  - name: Volume Management
-    description: "Initialize z/OS DASD Volumes"
-    playbooks:
-      - zos_concepts/volume_management/volume_initialization/init_dasd_vol_and_run_sample_jcl/init_dasd_vol_and_run_sample_jcl.yml
+  # - name: Volume Management
+  #   description: "Initialize z/OS DASD Volumes"
+  #   playbooks:
+  #     - zos_concepts/volume_management/volume_initialization/init_dasd_vol_and_run_sample_jcl/init_dasd_vol_and_run_sample_jcl.yml
 
-  - name: ZFSADM
-    description: "Create, grow, shrink ZFS aggregate"
-    playbooks:
-      - zos_concepts/zfsadm/grow_zfs_fetch_trace_back/grow_zfs_fetch_trace_back.yml
-      - zos_concepts/zfsadm/shrink_zfs_different_size_and_verbose/shrink_zfs_different_size_and_verbose.yml
-      - zos_concepts/zfsadm/zfs_grow_aggr/grow_zfs_aggregate.yml
-      - zos_concepts/zfsadm/zfs_grow_aggr/scan_and_grow_zfs_aggr.yml
+  # - name: ZFSADM
+  #   description: "Create, grow, shrink ZFS aggregate"
+  #   playbooks:
+  #     - zos_concepts/zfsadm/grow_zfs_fetch_trace_back/grow_zfs_fetch_trace_back.yml
+  #     - zos_concepts/zfsadm/shrink_zfs_different_size_and_verbose/shrink_zfs_different_size_and_verbose.yml
+  #     - zos_concepts/zfsadm/zfs_grow_aggr/grow_zfs_aggregate.yml
+  #     - zos_concepts/zfsadm/zfs_grow_aggr/scan_and_grow_zfs_aggr.yml
 
-  - name: ZOS Operator
-    description: "z/OS Operator Basics"
-    playbooks:
-      - zos_concepts/zos_operator/zos_operator_basics/zos_operator_basics.yml
+  # - name: ZOS Operator
+  #   description: "z/OS Operator Basics"
+  #   playbooks:
+  #     - zos_concepts/zos_operator/zos_operator_basics/zos_operator_basics.yml
   
-  - name: ZOS Script
-    description: "Run REXX and Python scripts in a z/OS system"
-    playbooks:
-      - zos_concepts/zos_script/zos_script.yml
+  # - name: ZOS Script
+  #   description: "Run REXX and Python scripts in a z/OS system"
+  #   playbooks:
+  #     - zos_concepts/zos_script/zos_script.yml
   
-  - name: ZOS Stat 
-    description: "Query attributes from data sets, Generation Data Groups, aggregates and Unix System Services files"
-    playbooks:
-      - zos_concepts/zos_stat/zos_stat.yml
+  # - name: ZOS Stat 
+  #   description: "Query attributes from data sets, Generation Data Groups, aggregates and Unix System Services files"
+  #   playbooks:
+  #     - zos_concepts/zos_stat/zos_stat.yml
 
-  - name: Certificate Management
-    description: "Manage z/OS Certificates"
-    playbooks:
-      - zos_concepts/certificate_management/create_cert.yml
-      - zos_concepts/certificate_management/create_keyring.yml
-      - zos_concepts/certificate_management/list_cert.yml
-      - zos_concepts/certificate_management/delete_cert.yml
-      - zos_concepts/certificate_management/delete_keyring.yml
-      - zos_concepts/certificate_management/health_checker_security.yml
-      - zos_concepts/certificate_management/search_and_renew.yml
+  # - name: Certificate Management
+  #   description: "Manage z/OS Certificates"
+  #   playbooks:
+  #     - zos_concepts/certificate_management/create_cert.yml
+  #     - zos_concepts/certificate_management/create_keyring.yml
+  #     - zos_concepts/certificate_management/list_cert.yml
+  #     - zos_concepts/certificate_management/delete_cert.yml
+  #     - zos_concepts/certificate_management/delete_keyring.yml
+  #     - zos_concepts/certificate_management/health_checker_security.yml
+  #     - zos_concepts/certificate_management/search_and_renew.yml
