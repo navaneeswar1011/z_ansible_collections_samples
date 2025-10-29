@@ -10,10 +10,10 @@ vault_keys:                       #section for secrets
     type: host
 
 ansible_environment:
-  inventory: zos_concepts/zos_ping/inventories/inventory.yml
-  ansible_cfg: zos_concepts/zos_ping/ansible.cfg
-  host_vars: pipeline_config/inventories/host_vars
-  group_vars: pipeline_config/inventories/group_vars
+  inventory: pipeline_config/inventories/inventory.yml
+  ansible_cfg: pipeline_config/ansible.cfg
+  # host_vars: pipeline_config/inventories/host_vars
+  # group_vars: pipeline_config/inventories/group_vars
   collections:
     - ibm.ibm_zos_core
 
@@ -29,9 +29,10 @@ stages:
 
   - name: Datasets
     description: "This playbook demonstrates basic use cases for managing data sets on z/OS using Red Hat Ansible Certified Content for IBM Z."
+    
     playbooks:
       - zos_concepts/data_sets/data_set_basics/data_set_basics.yml
-      - zos_concepts/data_sets/copy_edit_summit/copy_edit_summit.yml
+      - zos_concepts/data_sets/copy_edit_submit/copy_edit_submit.yml
   
   - name: Data transfer
     description: "This playbook demonstrates how to copy data to and from a z/OS system using modules included in the Red Hat Ansible Certified Content for IBM Z core collection."
@@ -113,17 +114,17 @@ stages:
       - zos_concepts/zfsadm/zfs_grow_aggr/grow_zfs_aggregate.yml
       - zos_concepts/zfsadm/zfs_grow_aggr/scan_and_grow_zfs_aggr.yml
 
-  - name: Z/OS Operator
+  - name: ZOS Operator
     description: "z/OS Operator Basics"
     playbooks:
       - zos_concepts/zos_operator/zos_operator_basics/zos_operator_basics.yml
   
-  - name: Z/OS Script
+  - name: ZOS Script
     description: "Run REXX and Python scripts in a z/OS system"
     playbooks:
       - zos_concepts/zos_script/zos_script.yml
   
-  - name: Z/OS Stat 
+  - name: ZOS Stat 
     description: "Query attributes from data sets, Generation Data Groups, aggregates and Unix System Services files"
     playbooks:
       - zos_concepts/zos_stat/zos_stat.yml
