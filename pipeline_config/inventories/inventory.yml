@@ -17,9 +17,9 @@ source_system:
       ansible_user: "{{ lookup('env', 'ec_user') }}"
       ansible_ssh_private_key_file: "{{ lookup('env', 'ec_ssh') }}"
 
-      pyz: path_to_python_installation_on_zos_target
-      ansible_python_interpreter: path_to_python_interpreter_binary_on_zos_target
-      zoau: path_to_zoau_installation_on_zos_target
+      # pyz: path_to_python_installation_on_zos_target
+      # ansible_python_interpreter: path_to_python_interpreter_binary_on_zos_target
+      # zoau: path_to_zoau_installation_on_zos_target
     
     source: # do not change host name from "source"
       ansible_host: "{{ lookup('env', 'ec_host') }}"
