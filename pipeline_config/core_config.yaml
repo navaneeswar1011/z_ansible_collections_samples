@@ -131,10 +131,17 @@ stages:
   #   playbooks:
   #     - zos_concepts/zos_script/zos_script.yml
   
-  # - name: ZOS Stat 
-  #   description: "Query attributes from data sets, Generation Data Groups, aggregates and Unix System Services files"
-  #   playbooks:
-  #     - zos_concepts/zos_stat/zos_stat.yml
+  - name: ZOS Stat 
+    description: "Query attributes from data sets, Generation Data Groups, aggregates and Unix System Services files"
+    ansible_environment:
+      inventory: zos_concepts/zos_ping/inventories/inventory.yml
+      ansible_cfg: zos_concepts/zos_ping/ansible.cfg
+      # host_vars: pipeline_config/inventories/host_vars
+      # group_vars: pipeline_config/inventories/group_vars
+      collections:
+        - ibm.ibm_zos_core
+    playbooks:
+      - zos_concepts/zos_stat/zos_stat.yml
 
   # - name: Certificate Management
   #   description: "Manage z/OS Certificates"
