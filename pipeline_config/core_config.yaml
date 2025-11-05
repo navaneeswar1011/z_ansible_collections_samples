@@ -22,37 +22,37 @@ ansible_environment:
 stages:
   - name: Ping the EC
     description: Test the ssh connection to EC using ping
-    vault_variable_key: test_ec_ping
-    ansible_environment:
-      inventory: zos_concepts/zos_ping/inventories/inventory.yml
-      ansible_cfg: zos_concepts/zos_ping/ansible.cfg
-      # host_vars: pipeline_config/inventories/host_vars
-      # group_vars: pipeline_config/inventories/group_vars
-      collections:
-        - ibm.ibm_zos_core
     playbooks:
       - zos_concepts/zos_ping/zos_ping.yaml
-    cleanup:
-      - zos_concepts/zos_ping/zos_ping.yaml
-    validation:
-      - zos_concepts/zos_ping/zos_ping.yaml
+    # cleanup:
+    #   - zos_concepts/zos_ping/zos_ping.yaml
+    # validation:
+    #   - zos_concepts/zos_ping/zos_ping.yaml
 
   - name: Datasets
     description: "This playbook demonstrates basic use cases for managing data sets on z/OS using Red Hat Ansible Certified Content for IBM Z."
     
     playbooks:
       - zos_concepts/data_sets/data_set_basics/data_set_basics.yml
-  #     - zos_concepts/data_sets/copy_edit_submit/copy_edit_submit.yml
+      - zos_concepts/data_sets/copy_edit_submit/copy_edit_submit.yml
   
-  # - name: Data transfer
-  #   description: "This playbook demonstrates how to copy data to and from a z/OS system using modules included in the Red Hat Ansible Certified Content for IBM Z core collection."
-  #   playbooks:
-  #     - zos_concepts/data_transfer/copy_fetch_data_set/copy_fetch_data_set.yml
-  #     - zos_concepts/data_transfer/copy_sort_fetch/copy-sort-fetch.yml
-  #     - zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/dump-pack-ftp.yml
-  #     - zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/transfer-data-sets.yml
-  #     - zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/unpack-restore.yml
-  #     - zos_concepts/data_transfer/terse_fetch_data_set/terse_fetch_data_set.yml
+  - name: Data transfer
+    description: "This playbook demonstrates how to copy data to and from a z/OS system using modules included in the Red Hat Ansible Certified Content for IBM Z core collection."
+    vault_variable_key: data_transfer
+    ansible_environment:
+      inventory: zos_concepts/data_transfer/copy_sort_fetch/inventories/inventory.yml
+      # ansible_cfg: zos_concepts/zos_ping/ansible.cfg
+      # host_vars: pipeline_config/inventories/host_vars
+      # group_vars: pipeline_config/inventories/group_vars
+      # collections:
+      #   - ibm.ibm_zos_core
+    playbooks:
+      - zos_concepts/data_transfer/copy_fetch_data_set/copy_fetch_data_set.yml
+      - zos_concepts/data_transfer/copy_sort_fetch/copy-sort-fetch.yml
+      - zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/dump-pack-ftp.yml
+      - zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/transfer-data-sets.yml
+      - zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/unpack-restore.yml
+      - zos_concepts/data_transfer/terse_fetch_data_set/terse_fetch_data_set.yml
   
   # - name: Encoding
   #   description: "This playbook demonstrates how to perform encoding conversions"
@@ -134,17 +134,17 @@ stages:
   #   playbooks:
   #     - zos_concepts/zos_script/zos_script.yml
   
-  - name: ZOS Stat 
-    description: "Query attributes from data sets, Generation Data Groups, aggregates and Unix System Services files"
-    ansible_environment:
-      inventory: zos_concepts/zos_ping/inventories/inventory.yml
-      ansible_cfg: zos_concepts/zos_ping/ansible.cfg
-      # host_vars: pipeline_config/inventories/host_vars
-      # group_vars: pipeline_config/inventories/group_vars
-      collections:
-        - ibm.ibm_zos_core
-    playbooks:
-      - zos_concepts/zos_stat/zos_stat.yml
+  # - name: ZOS Stat 
+  #   description: "Query attributes from data sets, Generation Data Groups, aggregates and Unix System Services files"
+  #   ansible_environment:
+  #     inventory: zos_concepts/zos_ping/inventories/inventory.yml
+  #     ansible_cfg: zos_concepts/zos_ping/ansible.cfg
+  #     # host_vars: pipeline_config/inventories/host_vars
+  #     # group_vars: pipeline_config/inventories/group_vars
+  #     collections:
+  #       - ibm.ibm_zos_core
+  #   playbooks:
+  #     - zos_concepts/zos_stat/zos_stat.yml
 
   # - name: Certificate Management
   #   description: "Manage z/OS Certificates"
