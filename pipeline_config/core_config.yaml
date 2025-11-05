@@ -1,13 +1,15 @@
-vault_secret_path: secret/data/core
-vault_keys:                       #section for secrets
-  - name: ec_host
-    type: host
-  - name: ec_user
-    type: user
-  - name: ec_ssh
-    type: ssh
-  - name: dest_ec_host
-    type: host
+vault_metadata:
+  vault_secret_path: secret/data/core/machine
+  vault_variable_path: secret/data/core/variable
+  vault_keys:                       #section for secrets
+    - name: ec_host
+      type: host
+    - name: ec_user
+      type: user
+    - name: ec_ssh
+      type: ssh
+    - name: dest_ec_host
+      type: host
 
 ansible_environment:
   inventory: pipeline_config/inventories/inventory.yml
@@ -19,7 +21,8 @@ ansible_environment:
 
 stages:
   - name: Ping the EC
-    description: "Test the ssh connection to EC using ping"
+    description: Test the ssh connection to EC using ping
+    vault_variable_key: test_ec_ping
     ansible_environment:
       inventory: zos_concepts/zos_ping/inventories/inventory.yml
       ansible_cfg: zos_concepts/zos_ping/ansible.cfg
