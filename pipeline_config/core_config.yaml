@@ -29,30 +29,53 @@ stages:
     # validation:
     #   - zos_concepts/zos_ping/zos_ping.yaml
 
-  - name: Datasets
-    description: "This playbook demonstrates basic use cases for managing data sets on z/OS using Red Hat Ansible Certified Content for IBM Z."
-    
-    playbooks:
-      - zos_concepts/data_sets/data_set_basics/data_set_basics.yml
-      - zos_concepts/data_sets/copy_edit_submit/copy_edit_submit.yml
+  # - name: Datasets
+  #   description: "This playbook demonstrates basic use cases for managing data sets on z/OS using Red Hat Ansible Certified Content for IBM Z."
+  #   playbooks:
+  #     - zos_concepts/data_sets/data_set_basics/data_set_basics.yml
+  #     - zos_concepts/data_sets/copy_edit_submit/copy_edit_submit.yml
   
-  - name: Data transfer
-    description: "This playbook demonstrates how to copy data to and from a z/OS system using modules included in the Red Hat Ansible Certified Content for IBM Z core collection."
-    vault_variable_key: data_transfer
+  - name: Archive and Unarchive
+    description: "Transfer Data Sets Using Ansible"
+    vault_variable_key: archive_vars
     ansible_environment:
-      inventory: zos_concepts/data_transfer/copy_sort_fetch/inventories/inventory.yml
+      inventory: zos_concepts/data_transfer/archive_copy_unarchive_restore/inventories/inventory.yml
       # ansible_cfg: zos_concepts/zos_ping/ansible.cfg
       # host_vars: pipeline_config/inventories/host_vars
       # group_vars: pipeline_config/inventories/group_vars
       # collections:
       #   - ibm.ibm_zos_core
     playbooks:
+      - zos_concepts/data_transfer/archive_copy_unarchive_restore/archive_fetch_data_sets.yml
+      - zos_concepts/data_transfer/archive_copy_unarchive_restore/unarchive_data_sets.yml
+
+  - name: Copy and fetch data set
+    description: "Copy and Fetch Data sets"
+    vault_variable_key: copy_fetch_dataset
+    ansible_environment:
+      inventory: zos_concepts/data_transfer/copy_fetch_data_set/inventories/inventory.yml
+    playbooks:
       - zos_concepts/data_transfer/copy_fetch_data_set/copy_fetch_data_set.yml
+  
+  - name: Copy Sort and Fetch Data Sets
+    description: "Copy, Sort and Fetch Data Sets on z/OS using Ansible"
+    vault_variable_key: copy_fetch_dataset
+    ansible_environment:
+      inventory: zos_concepts/data_transfer/copy_sort_fetch/inventories/inventory.yml
+    playbooks:
       - zos_concepts/data_transfer/copy_sort_fetch/copy-sort-fetch.yml
+  
+  - name: Dump pack ftp
+    description: "Dump pack ftp"
+    vault_variable_key: archive_vars
+    ansible_environment:
+      inventory: zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/inventories/inventory.yml
+    playbooks:
       - zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/dump-pack-ftp.yml
       - zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/transfer-data-sets.yml
       - zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/unpack-restore.yml
-      - zos_concepts/data_transfer/terse_fetch_data_set/terse_fetch_data_set.yml
+
+
   
   # - name: Encoding
   #   description: "This playbook demonstrates how to perform encoding conversions"
