@@ -67,7 +67,7 @@ stages:
   
   - name: Dump pack ftp
     description: "Dump pack ftp"
-    vault_variable_key: archive_vars
+    vault_variable_key: dump_pack_ftp
     ansible_environment:
       inventory: zos_concepts/data_transfer/dump_pack_ftp_unpack_restore/inventories/inventory.yml
     playbooks:
