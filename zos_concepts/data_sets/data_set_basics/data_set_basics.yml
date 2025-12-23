@@ -161,14 +161,14 @@
       debug:
         msg: "{{ result }}"
 
-    - name: Delete the data sets
-      zos_data_set:
-        batch:
-          - name: "{{ data_set_name }}"
-            state: absent
-          - name: "{{ pds_name }}"
-            state: absent
-      register: result
+    # - name: Delete the data sets
+    #   zos_data_set:
+    #     batch:
+    #       - name: "{{ data_set_name }}"
+    #         state: absent
+    #       - name: "{{ pds_name }}"
+    #         state: absent
+    #   register: result
 
     - name: Response for deleting the data sets
       debug:
